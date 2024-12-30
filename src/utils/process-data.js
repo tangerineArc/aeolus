@@ -6,7 +6,6 @@ function getCurrentConditions(data, unitSystem) {
   return {
     resolvedAddress: [data.resolvedAddress, null],
     description: [data.description, null],
-    datetime: [data.currentConditions.datetime, null],
     meanTemperature: [data.currentConditions.temp, units.temperature],
     feelsLike: [data.currentConditions.feelslike, units.temperature],
     relativeHumidity: [data.currentConditions.humidity, "%"],

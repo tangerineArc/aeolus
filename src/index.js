@@ -9,4 +9,7 @@ import getWeatherData from "./models/data";
 
 // getWeatherData(location, units).then(data => {
 //   console.log(data);
+
+
+
 // });
