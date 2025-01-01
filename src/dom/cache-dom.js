@@ -1,3 +1,5 @@
+"use strict";
+
 const currentWeatherIconContainer = document.querySelector("#summary");
 
 const currentMeanTemperatureNode = document.querySelector("#description > p");
