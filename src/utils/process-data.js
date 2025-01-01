@@ -54,7 +54,7 @@ function getSevenDaysConditions(data, unitSystem) {
   const units = getUnits(unitSystem);
 
   const conditions = [];
-  for (let i = 1; i <= 6; i ++) {
+  for (let i = 1; i < 7; i ++) {
     conditions.push({
       datetime: [data.days[i].datetime, null],
       conditions: [data.days[i].conditions, null],

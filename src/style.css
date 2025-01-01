@@ -10,7 +10,6 @@
 
 :root {
   --primary-background-color: #232323;
-  /* --primary-background-color: #fff; */
   --secondary-background-color: #343434;
   --tertiary-background-color: #464646;
   
@@ -19,7 +18,7 @@
 
 body {
   background-color: var(--primary-background-color);
-  padding: 2rem 1rem;
+  padding: 2rem 0rem;
 
   color: var(--primary-text-color);
   font-family: "Lexend", serif;
@@ -35,7 +34,7 @@ main {
 
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 2rem;
 }
 
 #top-panel {
@@ -113,6 +112,10 @@ main {
   justify-content: center;
   gap: 3rem;
 
+  background-color: var(--secondary-background-color);
+  padding: 2rem 1rem;
+  border-radius: 10px;
+
   & > #overview {
     display: flex;
     gap: 3rem;
@@ -155,11 +158,12 @@ main {
         & > p:last-of-type {
           margin-top: 0.5rem;
           margin-left: -1rem;
-          background-color: var(--secondary-background-color);
+          background-color: var(--tertiary-background-color);
           padding: 0.5rem 1rem;
           border-radius: 10px;
 
           font-size: 0.9rem;
+          line-height: 1.5;
         }
       }
     }
@@ -199,14 +203,20 @@ main {
 #current-conditions {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 3rem 1rem;
+  gap: 1rem;
 
-  padding-left: 2rem;
+  padding: 1rem;
+  background-color: var(--secondary-background-color);
+  border-radius: 10px;
 
   & > div {
     display: flex;
     align-items: center;
     gap: 1rem;
+
+    background-color: var(--tertiary-background-color);
+    padding: 2rem 1rem;
+    border-radius: 10px;
 
     & > svg {
       width: 3rem;
