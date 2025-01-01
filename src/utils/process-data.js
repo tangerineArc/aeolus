@@ -74,7 +74,7 @@ function getUnits(system) {
   switch (system) {
     case "metric":
       return {
-        temperature: "\u00B0 C",
+        temperature: "\u00B0C",
         precipitation: "mm",
         snow: "cm",
         speed: "kph",
@@ -82,7 +82,7 @@ function getUnits(system) {
       };
     case "us":
       return {
-        temperature: "\u00B0 F",
+        temperature: "\u00B0F",
         precipitation: "inches",
         snow: "inches",
         speed: "mph",
@@ -90,7 +90,7 @@ function getUnits(system) {
       };
     case "uk":
       return {
-        temperature: "\u00B0 C",
+        temperature: "\u00B0C",
         precipitation: "mm",
         snow: "cm",
         speed: "mph",
