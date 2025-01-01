@@ -6,13 +6,17 @@ import getWeatherData from "./models/data";
 
 import { getCurrentConditions } from "./utils/process-data.js";
 
-import { currentMeanTemperatureNode, currentFeelsLikeTemperatureNode, currentConditionsTextNode, resolvedAddressNode, currentMinMaxTemperatureNodes, currentParameterContainers } from "./dom/cache-dom.js";
+import { currentWeatherIconContainer, currentMeanTemperatureNode, currentFeelsLikeTemperatureNode, currentConditionsTextNode, resolvedAddressNode, currentMinMaxTemperatureNodes, currentParameterContainers } from "./dom/cache-dom.js";
+
+import icons from "./ui/icons.js";
 
 const units = "metric";
 const location = "patna";
 
 getWeatherData(location, units).then(data => {
   const currentConditions = getCurrentConditions(data, units);
+
+  currentWeatherIconContainer.innerHTML = icons[currentConditions.weatherIcon[0]];
 
   currentMeanTemperatureNode.innerHTML = `
     ${currentConditions.meanTemperature[0]}<span>${currentConditions.meanTemperature[1]}</span>

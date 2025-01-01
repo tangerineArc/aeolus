@@ -160,4 +160,23 @@ const clearNight = `
   </svg>
 `;
 
-export { snow, snowShowersDay, snowShowersNight, thunderRain, thunderShowersDay, thunderShowersNight, showersDay, showersNight, rain, fog, wind, cloudy, partlyCloudyDay, partlyCloudyNight, clearDay, clearNight };
+const icons = {
+  "snow": snow,
+  "snow-showers-day": snowShowersDay,
+  "snow-showers-night": snowShowersNight,
+  "thunder-rain": thunderRain,
+  "thunder-showers-day": thunderShowersDay,
+  "thunder-showers-night": thunderShowersNight,
+  "showers-day": showersDay,
+  "showers-night": showersNight,
+  "rain": rain,
+  "fog": fog,
+  "wind": wind,
+  "cloudy": cloudy,
+  "partly-cloudy-day": partlyCloudyDay,
+  "partly-cloudy-night": partlyCloudyNight,
+  "clear-day": clearDay,
+  "clear-night": clearNight
+};
+
+export default icons;

@@ -1,3 +1,5 @@
+const currentWeatherIconContainer = document.querySelector("#summary");
+
 const currentMeanTemperatureNode = document.querySelector("#description > p");
 
 const currentFeelsLikeTemperatureNode = document.querySelector("#description > div > p:first-of-type > span");
@@ -10,4 +12,4 @@ const currentMinMaxTemperatureNodes = document.querySelectorAll("#temperature-su
 
 const currentParameterContainers = document.querySelectorAll("#current-conditions > div");
 
-export { currentMeanTemperatureNode, currentFeelsLikeTemperatureNode, currentConditionsTextNode, resolvedAddressNode, currentMinMaxTemperatureNodes, currentParameterContainers };
+export { currentWeatherIconContainer, currentMeanTemperatureNode, currentFeelsLikeTemperatureNode, currentConditionsTextNode, resolvedAddressNode, currentMinMaxTemperatureNodes, currentParameterContainers };
