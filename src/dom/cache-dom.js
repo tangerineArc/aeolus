@@ -14,4 +14,8 @@ const currentMinMaxTemperatureNodes = document.querySelectorAll("#temperature-su
 
 const currentParameterContainers = document.querySelectorAll("#current-conditions > div");
 
-export { currentWeatherIconContainer, currentMeanTemperatureNode, currentFeelsLikeTemperatureNode, currentConditionsTextNode, resolvedAddressNode, currentMinMaxTemperatureNodes, currentParameterContainers };
+const hourlyConditionsContainer = document.querySelector("#hourly-conditions");
+
+const hourContainers = document.querySelectorAll(".hour-container");
+
+export { currentWeatherIconContainer, currentMeanTemperatureNode, currentFeelsLikeTemperatureNode, currentConditionsTextNode, resolvedAddressNode, currentMinMaxTemperatureNodes, currentParameterContainers, hourlyConditionsContainer, hourContainers };

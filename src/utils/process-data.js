@@ -48,6 +48,8 @@ function getHourlyConditions(data, unitSystem) {
       meanTemperature: [data.days[0].hours[i].temp, units.temperature]
     });
   }
+
+  return conditions;
 }
 
 function getSevenDaysConditions(data, unitSystem) {
