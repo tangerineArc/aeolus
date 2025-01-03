@@ -1,6 +1,6 @@
 "use strict";
 
-import { currentWeatherIconContainer, currentMeanTemperatureNode, currentFeelsLikeTemperatureNode, currentConditionsTextNode, resolvedAddressNode, currentMinMaxTemperatureNodes, currentParameterContainers, hourlyConditionsContainer, hourContainers } from "./cache-dom.js";
+import { currentWeatherIconContainer, currentMeanTemperatureNode, currentFeelsLikeTemperatureNode, currentConditionsTextNode, resolvedAddressNode, currentMinMaxTemperatureNodes, currentConditionsDescriptionNode, currentParameterContainers, hourlyConditionsContainer, hourContainers, dayContainers } from "./cache-dom.js";
 
 import icons from "../ui/icons.js";
 
@@ -26,6 +26,8 @@ function renderCurrentConditionsData(currentConditions) {
         ${value}<span>${unit}</span>
       `;
   });
+
+  currentConditionsDescriptionNode.textContent = currentConditions.description[0];
 
   currentParameterContainers.forEach((container) => {
     const parameterValue = container.querySelector(".parameter-value");
@@ -64,4 +66,27 @@ function renderHourlyConditionsData(hourlyConditions) {
   }
 }
 
-export { renderCurrentConditionsData, renderHourlyConditionsData };
+function renderSevenDaysConditionsData(sevenDaysConditions) {
+  const weekDays = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+  const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+
+  for (let i = 0; i < 7; i ++) {
+    const container = dayContainers[i];
+    const detailsContainer = container.querySelector(":scope > div:last-of-type");
+
+    const date = new Date(sevenDaysConditions[i].datetime);
+    container.querySelector(":scope > div:first-of-type").innerHTML = `
+      ${icons[sevenDaysConditions[i].weatherIcon[0]]}
+      <div>${weekDays[date.getDay()]}</div>
+      <div>${date.getDate()} ${months[date.getMonth()]}</div>
+    `;
+
+    detailsContainer.querySelector(":scope > p").textContent = sevenDaysConditions[i].conditions[0];
+
+    detailsContainer.querySelector(":scope > div:first-of-type > p").textContent = `${sevenDaysConditions[i].meanTemperature[0]} ${sevenDaysConditions[i].meanTemperature[1]}`;
+
+    detailsContainer.querySelector(":scope > div:last-of-type > p").textContent = `${sevenDaysConditions[i].precipitationChance[0]} ${sevenDaysConditions[i].precipitationChance[1]}`;
+  }
+}
+
+export { renderCurrentConditionsData, renderHourlyConditionsData, renderSevenDaysConditionsData };

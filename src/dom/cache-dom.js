@@ -12,10 +12,14 @@ const resolvedAddressNode = document.querySelector("#description > div > p:last-
 
 const currentMinMaxTemperatureNodes = document.querySelectorAll("#temperature-summary > div > p:first-of-type");
 
+const currentConditionsDescriptionNode = document.querySelector("#current-description > p");
+
 const currentParameterContainers = document.querySelectorAll("#current-conditions > div");
 
 const hourlyConditionsContainer = document.querySelector("#hourly-conditions");
 
 const hourContainers = document.querySelectorAll(".hour-container");
 
-export { currentWeatherIconContainer, currentMeanTemperatureNode, currentFeelsLikeTemperatureNode, currentConditionsTextNode, resolvedAddressNode, currentMinMaxTemperatureNodes, currentParameterContainers, hourlyConditionsContainer, hourContainers };
+const dayContainers = document.querySelectorAll(".day-container");
+
+export { currentWeatherIconContainer, currentMeanTemperatureNode, currentFeelsLikeTemperatureNode, currentConditionsTextNode, resolvedAddressNode, currentMinMaxTemperatureNodes, currentConditionsDescriptionNode, currentParameterContainers, hourlyConditionsContainer, hourContainers, dayContainers };

@@ -41,7 +41,6 @@ function getHourlyConditions(data, unitSystem) {
   const conditions = [];
   for (let i = 0; i < 24; i ++) {
     conditions.push({
-      datetime: [data.days[0].hours[i].datetime, null],
       conditions: [data.days[0].hours[i].conditions, null],
       weatherIcon: [data.days[0].hours[i].icon, null],
       precipitationChance: [data.days[0].hours[i].precipprob, "%"],
@@ -56,16 +55,13 @@ function getSevenDaysConditions(data, unitSystem) {
   const units = getUnits(unitSystem);
 
   const conditions = [];
-  for (let i = 1; i < 7; i ++) {
+  for (let i = 1; i <= 7; i ++) {
     conditions.push({
       datetime: [data.days[i].datetime, null],
       conditions: [data.days[i].conditions, null],
-      description: [data.days[i].description, null],
       weatherIcon: [data.days[i].icon, null],
       precipitationChance: [data.days[i].precipprob, "%"],
       meanTemperature: [data.days[i].temp, units.temperature],
-      maximumTemperature: [data.days[i].tempmax, units.temperature],
-      minimumTemperature: [data.days[i].tempmin, units.temperature]
     });
   }
 
