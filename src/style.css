@@ -42,7 +42,7 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
 }
 
 #location-input-container {
@@ -85,7 +85,10 @@ main {
 #settings {
   position: relative;
 
-  & > div:first-of-type {
+  display: flex;
+  gap: 1.5rem;
+
+  & > div:not(:last-of-type) {
     background-color: var(--secondary-background-color);
     padding: 0.5rem;
     border-radius: 50%;
@@ -104,7 +107,7 @@ main {
     }
   }
 
-  & > div:first-of-type:hover {
+  & > div:not(:last-of-type):hover {
     background-color: var(--tertiary-background-color);
   }
 
@@ -116,7 +119,7 @@ main {
     position: absolute;
     z-index: 1;
     top: 130%;
-    right: 20%;
+    right: 5%;
 
     visibility: hidden;
 
@@ -220,6 +223,7 @@ main {
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
       gap: 0.5rem;
 
       & > p:first-of-type {

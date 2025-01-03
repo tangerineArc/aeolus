@@ -1,6 +1,10 @@
 "use strict";
 
-const unitsSelector = document.querySelector("#settings > div:first-of-type");
+const locationInput = document.querySelector("#location-input");
+
+const searchButton = document.querySelector("#search-button");
+
+const unitsSelector = document.querySelector("#units-selector");
 
 const dropDown = document.querySelector("#drop-down-menu");
 
@@ -28,4 +32,4 @@ const hourContainers = document.querySelectorAll(".hour-container");
 
 const dayContainers = document.querySelectorAll(".day-container");
 
-export { unitsSelector, dropDown, dropDownItems, currentWeatherIconContainer, currentMeanTemperatureNode, currentFeelsLikeTemperatureNode, currentConditionsTextNode, resolvedAddressNode, currentMinMaxTemperatureNodes, currentConditionsDescriptionNode, currentParameterContainers, hourlyConditionsContainer, hourContainers, dayContainers };
+export { locationInput, searchButton, unitsSelector, dropDown, dropDownItems, currentWeatherIconContainer, currentMeanTemperatureNode, currentFeelsLikeTemperatureNode, currentConditionsTextNode, resolvedAddressNode, currentMinMaxTemperatureNodes, currentConditionsDescriptionNode, currentParameterContainers, hourlyConditionsContainer, hourContainers, dayContainers };
