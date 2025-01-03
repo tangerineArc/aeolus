@@ -245,6 +245,26 @@ main {
   }
 }
 
+#error-container {
+  background-color: #46122044;
+  padding: 1.2rem 1rem;
+  border-radius: 10px;
+
+  color: #ad2831;
+  line-height: 1.5;
+
+  display: none;
+  align-items: center;
+  gap: 0.8rem;
+
+  & > svg {
+    flex-shrink: 0;
+
+    width: 1.3rem;
+    height: 1.3rem;
+  }
+}
+
 #current-description {
   background-color: var(--secondary-background-color);
   padding: 1.2rem 1rem;
@@ -254,9 +274,13 @@ main {
   align-items: center;
   gap: 0.8rem;
 
+  line-height: 1.5;
+
   & > svg {
     width: 1.3rem;
     height: 1.3rem;
+
+    flex-shrink: 0;
   }
 }
 

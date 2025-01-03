@@ -10,6 +10,8 @@ const dropDown = document.querySelector("#drop-down-menu");
 
 const dropDownItems = document.querySelectorAll("#drop-down-menu > div");
 
+const errorContainer = document.querySelector("#error-container");
+
 const currentWeatherIconContainer = document.querySelector("#summary");
 
 const currentMeanTemperatureNode = document.querySelector("#description > p");
@@ -32,4 +34,4 @@ const hourContainers = document.querySelectorAll(".hour-container");
 
 const dayContainers = document.querySelectorAll(".day-container");
 
-export { locationInput, searchButton, unitsSelector, dropDown, dropDownItems, currentWeatherIconContainer, currentMeanTemperatureNode, currentFeelsLikeTemperatureNode, currentConditionsTextNode, resolvedAddressNode, currentMinMaxTemperatureNodes, currentConditionsDescriptionNode, currentParameterContainers, hourlyConditionsContainer, hourContainers, dayContainers };
+export { locationInput, searchButton, unitsSelector, dropDown, dropDownItems, errorContainer, currentWeatherIconContainer, currentMeanTemperatureNode, currentFeelsLikeTemperatureNode, currentConditionsTextNode, resolvedAddressNode, currentMinMaxTemperatureNodes, currentConditionsDescriptionNode, currentParameterContainers, hourlyConditionsContainer, hourContainers, dayContainers };
