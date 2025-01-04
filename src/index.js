@@ -9,6 +9,7 @@ import {
   getHourlyConditions,
   getSevenDaysConditions,
 } from "./utils/process-data.js";
+import { isStorageAvailable } from "./utils/storage.js";
 
 import {
   loadingDialog,
@@ -26,9 +27,29 @@ import {
 } from "./dom/render-dom.js";
 
 let units = "metric";
-let location = "patna";
+let location = "bankura";
+
+let isLoading = true;
 
 loadingDialog.showModal();
+
+if (isStorageAvailable()) {
+  if (!localStorage.getItem("location")) {
+    localStorage.setItem("location", location);
+  } else {
+    location = localStorage.getItem("location");
+  }
+
+  if (!localStorage.getItem("units")) {
+    localStorage.setItem("units", units);
+  } else {
+    units = localStorage.getItem("units");
+
+    dropDown.querySelector(".selected-setting").className = "";
+    dropDown.querySelector(`[data-unit="${units}"]`).className =
+      "selected-setting";
+  }
+}
 
 getWeatherData(location, units)
   .then((data) => {
@@ -40,6 +61,7 @@ getWeatherData(location, units)
   })
   .finally(() => {
     loadingDialog.close();
+    isLoading = false;
   });
 
 unitsSelector.addEventListener("click", () => {
@@ -65,9 +87,13 @@ dropDownItems.forEach((item) => {
       })
       .finally(() => {
         loadingDialog.close();
+        isLoading = false;
       });
 
+    if (isStorageAvailable) localStorage.setItem("units", units);
+
     loadingDialog.showModal();
+    isLoading = true;
 
     dropDown.querySelector(".selected-setting").className = "";
     item.className = "selected-setting";
@@ -77,6 +103,10 @@ dropDownItems.forEach((item) => {
 });
 
 document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && isLoading) {
+    event.preventDefault(); // prevent the loader from closing
+  }
+
   if (
     locationInput === document.activeElement &&
     locationInput.value &&
@@ -85,7 +115,9 @@ document.addEventListener("keydown", (event) => {
     getWeatherData(locationInput.value, units)
       .then((data) => {
         handleData(data);
+
         location = locationInput.value;
+        if (isStorageAvailable) localStorage.setItem("location", location);
 
         locationInput.value = "";
         locationInput.blur();
@@ -96,9 +128,11 @@ document.addEventListener("keydown", (event) => {
       })
       .finally(() => {
         loadingDialog.close();
+        isLoading = false;
       });
 
     loadingDialog.showModal();
+    isLoading = true;
   }
 });
 
@@ -108,7 +142,9 @@ searchButton.addEventListener("click", () => {
   getWeatherData(locationInput.value, units)
     .then((data) => {
       handleData(data);
+
       location = locationInput.value;
+      if (isStorageAvailable) localStorage.setItem("location", location);
 
       locationInput.value = "";
       locationInput.blur();
@@ -119,9 +155,11 @@ searchButton.addEventListener("click", () => {
     })
     .finally(() => {
       loadingDialog.close();
+      isLoading = false;
     });
 
   loadingDialog.showModal();
+  isLoading = true;
 });
 
 function handleError(message) {
