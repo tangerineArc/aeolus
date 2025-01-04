@@ -31,7 +31,7 @@ function getCurrentConditions(data, unitSystem) {
     moonphase: [data.currentConditions.moonphase, null],
     maximumTemperature: [data.days[0].tempmax, units.temperature],
     minimumTemperature: [data.days[0].tempmin, units.temperature],
-    precipitationCover: [data.days[0].precipcover, "%"]
+    precipitationCover: [data.days[0].precipcover, "%"],
   };
 }
 
@@ -39,12 +39,12 @@ function getHourlyConditions(data, unitSystem) {
   const units = getUnits(unitSystem);
 
   const conditions = [];
-  for (let i = 0; i < 24; i ++) {
+  for (let i = 0; i < 24; i++) {
     conditions.push({
       conditions: [data.days[0].hours[i].conditions, null],
       weatherIcon: [data.days[0].hours[i].icon, null],
       precipitationChance: [data.days[0].hours[i].precipprob, "%"],
-      meanTemperature: [data.days[0].hours[i].temp, units.temperature]
+      meanTemperature: [data.days[0].hours[i].temp, units.temperature],
     });
   }
 
@@ -55,7 +55,7 @@ function getSevenDaysConditions(data, unitSystem) {
   const units = getUnits(unitSystem);
 
   const conditions = [];
-  for (let i = 1; i <= 7; i ++) {
+  for (let i = 1; i <= 7; i++) {
     conditions.push({
       datetime: [data.days[i].datetime, null],
       conditions: [data.days[i].conditions, null],

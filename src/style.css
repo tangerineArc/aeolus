@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap");
 
 *,
 *::before,
@@ -13,7 +13,7 @@
   --secondary-background-color: #343434;
   --tertiary-background-color: #464646;
   --quaternary-background-color: #575757;
-  
+
   --primary-text-color: lightgrey;
 }
 
@@ -36,6 +36,24 @@ main {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+}
+
+dialog {
+  border: none;
+  outline: none;
+  padding: 1rem;
+  background: transparent;
+  user-select: none;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+::backdrop {
+  background-color: #000;
+  opacity: 0.75;
 }
 
 #top-panel {
@@ -173,27 +191,27 @@ main {
 
     & > #description {
       max-width: 30ch;
-  
+
       display: flex;
       flex-direction: column;
       justify-content: center;
-  
+
       & > p {
         font-size: 4rem;
-  
+
         width: fit-content;
 
         position: relative;
-  
+
         & > span {
           font-size: 1.2rem;
-  
+
           position: absolute;
           top: 0.5rem;
           right: -1.5rem;
         }
       }
-  
+
       & > div {
         display: flex;
         flex-direction: column;
@@ -321,7 +339,7 @@ main {
 
         & > span {
           font-size: 0.9rem;
-          
+
           position: absolute;
           top: 0.1rem;
           left: calc(100% + 0.3rem);
@@ -341,7 +359,8 @@ h2 {
   border-radius: 10px;
   overflow: auto;
   scrollbar-width: none;
-  scrollbar-color: var(--primary-background-color) var(--secondary-background-color);
+  scrollbar-color: var(--primary-background-color)
+    var(--secondary-background-color);
 
   display: flex;
   gap: 1rem;
@@ -380,7 +399,7 @@ h2 {
 
       & > p {
         margin-bottom: 0.5rem;
-        
+
         text-align: center;
         word-wrap: break-word;
       }
@@ -409,7 +428,8 @@ h2 {
 
   overflow: auto;
   scrollbar-width: none;
-  scrollbar-color: var(--primary-background-color) var(--secondary-background-color);
+  scrollbar-color: var(--primary-background-color)
+    var(--secondary-background-color);
 
   & > .day-container {
     display: flex;
@@ -447,7 +467,7 @@ h2 {
 
       & > p {
         margin-bottom: 0.5rem;
-        
+
         text-align: center;
         word-wrap: break-word;
       }

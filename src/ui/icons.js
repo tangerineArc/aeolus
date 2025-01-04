@@ -163,7 +163,7 @@ const clearNight = `
 `;
 
 const icons = {
-  "snow": snow,
+  snow: snow,
   "snow-showers-day": snowShowersDay,
   "snow-showers-night": snowShowersNight,
   "thunder-rain": thunderRain,
@@ -171,14 +171,14 @@ const icons = {
   "thunder-showers-night": thunderShowersNight,
   "showers-day": showersDay,
   "showers-night": showersNight,
-  "rain": rain,
-  "fog": fog,
-  "wind": wind,
-  "cloudy": cloudy,
+  rain: rain,
+  fog: fog,
+  wind: wind,
+  cloudy: cloudy,
   "partly-cloudy-day": partlyCloudyDay,
   "partly-cloudy-night": partlyCloudyNight,
   "clear-day": clearDay,
-  "clear-night": clearNight
+  "clear-night": clearNight,
 };
 
 export default icons;

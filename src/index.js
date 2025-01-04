@@ -4,21 +4,42 @@ import "./style.css";
 
 import getWeatherData from "./models/data";
 
-import { getCurrentConditions, getHourlyConditions, getSevenDaysConditions } from "./utils/process-data.js";
+import {
+  getCurrentConditions,
+  getHourlyConditions,
+  getSevenDaysConditions,
+} from "./utils/process-data.js";
 
-import { unitsSelector, dropDown, dropDownItems, errorContainer, locationInput, searchButton } from "./dom/cache-dom.js";
-import { renderCurrentConditionsData, renderHourlyConditionsData, renderSevenDaysConditionsData } from "./dom/render-dom.js";
+import {
+  loadingDialog,
+  unitsSelector,
+  dropDown,
+  dropDownItems,
+  errorContainer,
+  locationInput,
+  searchButton,
+} from "./dom/cache-dom.js";
+import {
+  renderCurrentConditionsData,
+  renderHourlyConditionsData,
+  renderSevenDaysConditionsData,
+} from "./dom/render-dom.js";
 
 let units = "metric";
 let location = "patna";
 
-getWeatherData(location, units)
-  .then(data => {
-    handleData(data);
+loadingDialog.showModal();
 
+getWeatherData(location, units)
+  .then((data) => {
+    handleData(data);
     errorContainer.style.display = "none";
-  }).catch(error => {
+  })
+  .catch((error) => {
     handleError(error.message);
+  })
+  .finally(() => {
+    loadingDialog.close();
   });
 
 unitsSelector.addEventListener("click", () => {
@@ -31,18 +52,22 @@ unitsSelector.addEventListener("click", () => {
   }
 });
 
-dropDownItems.forEach(item => {
+dropDownItems.forEach((item) => {
   item.addEventListener("click", () => {
     units = item.dataset.unit;
     getWeatherData(location, units)
-      .then(data => {
+      .then((data) => {
         handleData(data);
-
         errorContainer.style.display = "none";
       })
-      .catch(error => {
+      .catch((error) => {
         handleError(error.message);
+      })
+      .finally(() => {
+        loadingDialog.close();
       });
+
+    loadingDialog.showModal();
 
     dropDown.querySelector(".selected-setting").className = "";
     item.className = "selected-setting";
@@ -51,10 +76,14 @@ dropDownItems.forEach(item => {
   });
 });
 
-document.addEventListener("keydown", event => {
-  if (locationInput === document.activeElement && locationInput.value && event.key === "Enter") {
+document.addEventListener("keydown", (event) => {
+  if (
+    locationInput === document.activeElement &&
+    locationInput.value &&
+    event.key === "Enter"
+  ) {
     getWeatherData(locationInput.value, units)
-      .then(data => {
+      .then((data) => {
         handleData(data);
         location = locationInput.value;
 
@@ -62,9 +91,14 @@ document.addEventListener("keydown", event => {
         locationInput.blur();
         errorContainer.style.display = "none";
       })
-      .catch(error => {
+      .catch((error) => {
         handleError(error.message);
+      })
+      .finally(() => {
+        loadingDialog.close();
       });
+
+    loadingDialog.showModal();
   }
 });
 
@@ -72,16 +106,22 @@ searchButton.addEventListener("click", () => {
   if (!locationInput.value) return;
 
   getWeatherData(locationInput.value, units)
-    .then(data => {
+    .then((data) => {
       handleData(data);
       location = locationInput.value;
 
       locationInput.value = "";
       locationInput.blur();
       errorContainer.style.display = "none";
-    }).catch(error => {
+    })
+    .catch((error) => {
       handleError(error.message);
+    })
+    .finally(() => {
+      loadingDialog.close();
     });
+
+  loadingDialog.showModal();
 });
 
 function handleError(message) {
